@@ -1,0 +1,20 @@
+Parameters of tool "GeMoMa Annotation Filter" (GAF, version: 1.7.1):
+t - tag (the tag used to read the GeMoMa annotations, default = mRNA)	= prediction
+c - common border filter (the filter on the common borders of transcripts, the lower the more transcripts will be checked as alternative splice isoforms, valid range = [0.0, 1.0], default = 0.75)	= 0.75
+m - maximal number of transcripts per gene (the maximal number of allowed transcript predictions per gene, valid range = [1, 2147483647], default = 2147483647)	= 2147483647
+	The following parameter(s) can be used multiple times:
+	p - prefix (the prefix can be used to distinguish predictions from different input files, OPTIONAL)	= null
+	w - weight (the weight can be used to prioritize predictions from different input files; each prediction will get an additional attribute sumWeight that can be used in the filter, valid range = [0.0, 1000.0], default = 1.0, OPTIONAL)	= 1.0
+	g - gene annotation file (GFF file containing the gene annotations (predicted by GeMoMa), mime = gff,gff3)	= mdYUCCA/gemoma_outdir/predicted_annotation.gff
+	a - annotation info (annotation information of the reference, tab-delimted file containing at least the columns transcriptName, GO and .*defline, mime = tabular, OPTIONAL)	= null
+d - default attributes (Comma-separated list of attributes that is set to NaN if they are not given in the annotation file. This allows to use these attributes for sorting or filter criteria. It is especially meaningful if the gene annotation files were received fom different software packages (e.g., GeMoMa, Braker, ...) having different attributes., default = tie,tde,tae,iAA,pAA,score)	= tie,tde,tae,iAA,pAA,score
+f - filter (A filter can be applied to transcript predictions to receive only reasonable predictions. The filter is applied to the GFF attributes. The default filter decides based on the completeness of the prediction (start=='M' and stop=='*') and the relative score (score/aa>=0.75) whether a prediction is used or not. In addition, predictions without score (isNaN(score)) will be used as external annotations do not have the attribute score. Different criteria can be combined using 'and' and 'or'. A more sophisticated filter could be applied for instance using the completeness, the relative score, the evidence as well as statistics based on RNA-seq: start=='M' and stop=='*' and score/aa>=0.75 and (evidence>1 or tpc==1.0), default = start=='M' and stop=='*' and (isNaN(score) or score/aa>=0.75), OPTIONAL)	= 
+s - sorting (comma-separated list that defines the way predictions are sorted within a cluster, default = evidence,score)	= evidence,score
+atf - alternative transcript filter (If a prediction is suggested as an alternative transcript, this additional filter will be applied. The filter works syntactically like the 'filter' parameter and allows you to keep the number of alternative transcripts small based on meaningful criteria. Reasonable filter could be based on RNA-seq data (tie==1) or on evidence (evidence>1). A more sophisticated filter could be applied combining several criteria: tie==1 or evidence>1, default = tie==1 or evidence>1, OPTIONAL)	= tie==1 or evidence>1
+outdir - The output directory, defaults to the current working directory (.)	= mdYUCCA/gemoma_outdir
+Exception in thread "main" java.lang.NullPointerException: Cannot invoke "javax.script.ScriptEngine.createBindings()" because "engine" is null
+	at projects.gemoma.GeMoMaAnnotationFilter$Prediction.filter(GeMoMaAnnotationFilter.java:945)
+	at projects.gemoma.GeMoMaAnnotationFilter.run(GeMoMaAnnotationFilter.java:373)
+	at projects.gemoma.GeMoMaModule.run(GeMoMaModule.java:92)
+	at de.jstacs.tools.ui.cli.CLI.run(CLI.java:426)
+	at projects.gemoma.GeMoMa.main(GeMoMa.java:378)

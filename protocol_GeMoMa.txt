@@ -1,0 +1,164 @@
+Parameters of tool "GeneModelMapper" (GeMoMa, version: 1.7.1):
+s - search results (The search results, e.g., from tblastn or mmseqs, mime = tabular)	= mdYUCCA/pcommunis_VsmdYUCCA_tblastn.outfmt6_filtered.txt
+t - target genome (The target genome file (FASTA), i.e., the target sequences in the blast run. Should be in IUPAC code, mime = fasta,fas,fa,fna,fasta.gz,fas.gz,fa.gz,fna.gz)	= /Users/jeilers/Desktop/pyrus_research/pyrus_genome/PyrusCommunis_BartlettDHv2.0.fa
+c - cds parts (The query cds parts file (FASTA), i.e., the cds parts that have been blasted, mime = fasta,fa,fas,fna)	= mdYUCCA/mdYUCCA_db_filt.fasta
+a - assignment (The assignment file, which combines parts of the CDS to transcripts, mime = tabular, OPTIONAL)	= null
+	The following parameter(s) can be used zero or multiple times:
+	i - introns (Introns (GFF), which might be obtained from RNA-seq, mime = gff,gff3)	= null
+r - reads (if introns are given by a GFF, only use those which have at least this number of supporting split reads, valid range = [1, 2147483647], default = 1)	= 1
+splice - splice (if no intron is given by RNA-seq, compute candidate splice sites or not, default = true)	= true
+	The following parameter(s) can be used zero or multiple times:
+	coverage - coverage (experimental coverage (RNA-seq), range={UNSTRANDED, STRANDED}, default = UNSTRANDED)	= UNSTRANDED
+	           Parameters for selection "UNSTRANDED":
+	           	coverage_unstranded - coverage_unstranded (The coverage file contains the unstranded coverage of the genome per interval. Intervals with coverage 0 (zero) can be left out., mime = bedgraph)	= null
+	           Parameters for selection "STRANDED":
+	           	coverage_forward - coverage_forward (The coverage file contains the forward coverage of the genome per interval. Intervals with coverage 0 (zero) can be left out., mime = bedgraph)	= null
+	           	coverage_reverse - coverage_reverse (The coverage file contains the reverse coverage of the genome per interval. Intervals with coverage 0 (zero) can be left out., mime = bedgraph)	= null
+g - genetic code (optional user-specified genetic code, mime = tabular, OPTIONAL)	= null
+sm - substitution matrix (optional user-specified substitution matrix, mime = tabular, OPTIONAL)	= null
+go - gap opening (The gap opening cost in the alignment, default = 11)	= 11
+ge - gap extension (The gap extension cost in the alignment, default = 1)	= 1
+m - maximum intron length (The maximum length of an intron, default = 15000)	= 15000
+sil - static intron length (A flag which allows to switch between static intron length, which can be specified by the user and is identical for all genes, and dynamic intron length, which is based on the gene-specific maximum intron length in the reference organism plus the user given maximum intron length, default = true)	= true
+intron-loss-gain-penalty - intron-loss-gain-penalty (The penalty used for intron loss and gain, default = 25)	= 25
+e - e-value (The e-value for filtering blast results, default = 100.0)	= 100.0
+ct - contig threshold (The threshold for evaluating contigs, valid range = [0.0, 1.0], default = 0.4)	= 0.2
+rt - region threshold (The threshold for evaluating regions, valid range = [0.0, 1.0], default = 0.9)	= 0.9
+h - hit threshold (The threshold for adding additional hits, valid range = [0.0, 1.0], default = 0.9)	= 0.9
+p - predictions (The (maximal) number of predictions per transcript, default = 10)	= 10000
+selected - selected (The path to list file, which allows to make only a predictions for the contained transcript ids. The first column should contain transcript IDs as given in the annotation. Remaining columns can be used to determine a target region that should be overlapped by the prediction, if columns 2 to 5 contain chromosome, strand, start and end of region, mime = tabular,txt, OPTIONAL)	= null
+as - avoid stop (A flag which allows to avoid (additional) pre-mature stop codons in a transcript, default = true)	= true
+approx - approx (whether an approximation is used to compute the score for intron gain, default = true)	= true
+pa - protein alignment (whether a protein alignment between the prediction and the reference transcript should be computed. If so two additional attributes (iAA, pAA) will be added to predictions in the gff output. These might be used in GAF. However, since some transcripts are very long this can increase the needed runtime and memory (RAM)., default = true)	= false
+prefix - prefix (A prefix to be used for naming the predictions, default = )	= 
+tag - tag (A user-specified tag for transcript predictions in the third column of the returned gff. It might be beneficial to set this to a specific value for some genome browsers., default = mRNA)	= prediction
+v - verbose (A flag which allows to output a wealth of additional information per transcript, default = false)	= false
+timeout - timeout (The (maximal) number of seconds to be used for the predictions of one transcript, if exceeded GeMoMa does not output a prediction for this transcript., valid range = [0, 604800], default = 3600)	= 3600
+sort - sort (A flag which allows to sort the search results, default = false)	= false
+Score - Score (A flag which allows to do nothing, re-score or re-align the search results, range={Trust, ReScore, ReAlign}, default = Trust)	= Trust
+outdir - The output directory, defaults to the current working directory (.)	= mdYUCCA/gemoma_outdir
+genome parts: 494	[tig00001153, tig00002484, tig00002002, tig00002244, tig00002247, tig00001157, tig00002488, tig00002246, tig00002249, tig00002127, tig00002248, tig00002006, SuperScaffold_581, tig00000196, tig00000076...
+CDS: 19 / 19
+gene	transcript	#parts	#predicted hits	#blast hits	#strands	best sum score	#candidate strands	#predictions	#alignments	best final score	chromosome	strand	start	end	#predicted parts	first part	first aa	last parts	last aa	#*	intron gain	intron loss	backup	cut	similar
+MdYUCCA2a	MdYUCCA2a	1	4	66	13	2184	9	9	343	2036	Chr15	-1	11658706	11661449	4	true	M	true	N	0	true	false	false	false	-23
+MdYUCCA2a	MdYUCCA2a	1	4	66	13	2184	9	8	349	2013	Chr2	-1	2592049	2594736	4	true	M	true	A	0	true	false	false	false	-594
+MdYUCCA2a	MdYUCCA2a	1	4	66	13	2184	9	7	355	1419	Chr8	-1	8257797	8260334	4	true	M	true	H	0	true	false	false	false	-235
+MdYUCCA2a	MdYUCCA2a	1	3	66	13	2184	9	6	359	1184	Chr10	-1	18247741	18249325	3	true	M	true	A	0	true	false	false	false	-4
+MdYUCCA2a	MdYUCCA2a	1	3	66	13	2184	9	5	363	1180	Chr5	-1	20205606	20207188	3	true	M	true	A	0	true	false	false	false	-32
+MdYUCCA2a	MdYUCCA2a	1	3	66	13	2184	9	4	367	1148	Chr13	1	15983018	15984862	3	true	M	true	Q	0	true	false	false	false	-138
+MdYUCCA2a	MdYUCCA2a	1	4	66	13	2184	9	3	373	1010	Chr16	1	16559142	16561031	4	true	M	true	Q	0	true	false	false	false	-228
+MdYUCCA2a	MdYUCCA2a	1	3	66	13	2184	9	2	377	782	Chr3	-1	22157338	22158779	3	true	M	true	K	0	true	false	false	false	-49
+MdYUCCA2a	MdYUCCA2a	1	5	66	13	2184	9	1	385	733	Chr10	1	648253	653264	5	true	M	true	I	0	true	false	false	false	-2147483648
+MdYUCCA2b	MdYUCCA2b	1	2	22	13	1011	7	7	54	1021	Chr10	-1	18248156	18249325	2	true	M	true	Q	0	true	false	false	false	-280
+MdYUCCA2b	MdYUCCA2b	1	1	22	13	1011	7	6	54	741	Chr5	-1	20206508	20207188	1	true	M	true	L	0	false	false	false	false	-240
+MdYUCCA2b	MdYUCCA2b	1	2	22	13	1011	7	5	56	501	Chr15	-1	17916771	17917775	2	true	M	true	V	0	true	false	false	false	-4
+MdYUCCA2b	MdYUCCA2b	1	3	22	13	1011	7	4	60	497	Chr16	1	16558875	16561016	3	true	M	true	K	0	true	false	false	false	-400
+MdYUCCA2b	MdYUCCA2b	1	2	22	13	1011	7	3	62	97	Chr3	-1	22157338	22157949	2	true	M	true	K	0	true	false	false	false	-32
+MdYUCCA2b	MdYUCCA2b	1	1	22	13	1011	7	2	62	65	Chr2	-1	2592010	2592243	1	true	M	true	N	0	false	false	false	false	-41
+MdYUCCA2b	MdYUCCA2b	1	1	22	13	1011	7	1	62	24	Chr8	-1	8258731	8258964	1	true	M	true	L	0	false	false	false	false	-2147483648
+MdYUCCA2c	MdYUCCA2c	1	3	30	11	1006	9	9	106	985	Chr10	-1	18247741	18249325	3	true	M	true	A	0	true	false	false	false	-15
+MdYUCCA2c	MdYUCCA2c	1	3	30	11	1006	9	8	110	970	Chr13	1	15983018	15984847	3	true	M	true	K	0	true	false	false	false	-113
+MdYUCCA2c	MdYUCCA2c	1	2	30	11	1006	9	7	112	857	Chr15	-1	7027812	7028855	2	true	M	true	F	0	true	false	false	false	-717
+MdYUCCA2c	MdYUCCA2c	1	2	30	11	1006	9	6	114	140	Chr5	-1	20205606	20206382	2	true	M	true	A	0	true	false	false	false	-17
+MdYUCCA2c	MdYUCCA2c	1	2	30	11	1006	9	5	116	123	Chr8	-1	9994806	9995940	2	true	M	true	K	0	true	false	false	false	-42
+MdYUCCA2c	MdYUCCA2c	1	1	30	11	1006	9	4	116	81	Chr2	-1	2592765	2592962	1	true	M	true	K	0	false	false	false	false	-11
+MdYUCCA2c	MdYUCCA2c	1	2	30	11	1006	9	3	118	70	Chr3	-1	22157338	22157949	2	true	M	true	K	0	true	false	false	false	-44
+MdYUCCA2c	MdYUCCA2c	1	2	30	11	1006	9	2	120	26	Chr10	1	649127	653264	2	true	M	true	I	0	true	false	false	false	-102
+MdYUCCA2c	MdYUCCA2c	1	1	30	11	1006	9	1	120	-76	Chr16	1	16560043	16560231	1	true	M	true	K	0	false	false	false	false	-2147483648
+MdYUCCA3a	MdYUCCA3a	1	3	55	14	2217	8	8	239	2031	Chr13	1	15983018	15984910	3	true	M	true	F	0	true	false	false	false	-75
+MdYUCCA3a	MdYUCCA3a	1	4	55	14	2217	8	7	245	1956	Chr16	1	16559142	16561079	4	true	M	true	F	0	true	false	false	false	-336
+MdYUCCA3a	MdYUCCA3a	1	3	55	14	2217	8	6	249	1620	Chr10	-1	18247714	18249325	3	true	M	true	F	0	true	false	false	false	-5
+MdYUCCA3a	MdYUCCA3a	1	3	55	14	2217	8	5	253	1615	Chr5	-1	20205579	20207188	3	true	M	true	F	0	true	false	false	false	-418
+MdYUCCA3a	MdYUCCA3a	1	4	55	14	2217	8	4	259	1197	Chr15	-1	5795848	5798475	4	true	M	true	H	0	true	false	false	false	-13
+MdYUCCA3a	MdYUCCA3a	1	4	55	14	2217	8	3	265	1184	Chr2	-1	2592088	2594736	4	true	M	true	K	0	true	false	false	false	-44
+MdYUCCA3a	MdYUCCA3a	1	4	55	14	2217	8	2	271	1140	Chr8	-1	9994767	9996757	4	true	M	true	H	0	true	false	false	false	-314
+MdYUCCA3a	MdYUCCA3a	1	3	55	14	2217	8	1	275	826	Chr3	-1	22157329	22158779	3	true	M	true	L	0	true	false	false	false	-2147483648
+MdYUCCA3b	MdYUCCA3b	1	2	30	10	1280	9	9	139	1205	Chr13	1	15983018	15984220	2	true	M	true	K	0	true	false	false	false	-346
+MdYUCCA3b	MdYUCCA3b	1	2	30	10	1280	9	8	141	859	Chr10	-1	18248156	18249325	2	true	M	true	Q	0	true	false	false	false	-137
+MdYUCCA3b	MdYUCCA3b	1	2	30	10	1280	9	7	143	722	Chr16	1	16559142	16559825	2	true	M	true	V	0	true	false	false	false	-211
+MdYUCCA3b	MdYUCCA3b	1	3	30	10	1280	9	6	147	511	Chr8	-1	9995506	9996520	3	true	M	true	K	0	true	false	false	false	-9
+MdYUCCA3b	MdYUCCA3b	1	3	30	10	1280	9	5	151	502	Chr3	-1	22157329	22158584	3	true	M	true	L	0	true	false	false	false	-41
+MdYUCCA3b	MdYUCCA3b	1	1	30	10	1280	9	4	151	461	Chr5	-1	20206508	20207188	1	true	M	true	L	0	false	false	false	false	-11
+MdYUCCA3b	MdYUCCA3b	1	2	30	10	1280	9	3	153	450	Chr15	-1	7027821	7028618	2	true	M	true	L	0	true	false	false	false	-76
+MdYUCCA3b	MdYUCCA3b	1	1	30	10	1280	9	2	153	374	Chr2	-1	2594032	2594736	1	true	M	true	L	0	false	false	false	false	-19
+MdYUCCA3b	MdYUCCA3b	1	3	30	10	1280	9	1	157	355	Chr10	1	648492	649582	3	true	M	true	Q	0	true	false	false	false	-2147483648
+MdYUCCA4a	MdYUCCA4a	1	3	45	12	1742	9	9	169	1730	Chr15	-1	7026827	7028855	3	true	M	true	K	0	true	false	false	false	-436
+MdYUCCA4a	MdYUCCA4a	1	2	45	12	1742	9	8	171	1294	Chr8	-1	9994752	9996757	2	true	M	true	K	0	true	false	false	false	-97
+MdYUCCA4a	MdYUCCA4a	1	3	45	12	1742	9	7	175	1197	Chr10	-1	18247723	18249325	3	true	M	true	I	0	true	false	false	false	-42
+MdYUCCA4a	MdYUCCA4a	1	3	45	12	1742	9	6	179	1155	Chr13	1	15983018	15984907	3	true	M	true	H	0	true	false	false	false	-138
+MdYUCCA4a	MdYUCCA4a	1	3	45	12	1742	9	5	183	1017	Chr2	-1	2592085	2594679	3	true	M	true	A	0	true	false	false	false	-205
+MdYUCCA4a	MdYUCCA4a	1	3	45	12	1742	9	4	187	812	Chr3	-1	22157341	22158869	3	true	M	true	I	0	true	false	false	false	-73
+MdYUCCA4a	MdYUCCA4a	1	2	45	12	1742	9	3	189	739	Chr5	-1	20205642	20207188	2	true	M	true	K	0	true	false	false	false	-205
+MdYUCCA4a	MdYUCCA4a	1	3	45	12	1742	9	2	193	534	Chr10	1	675465	677258	3	true	M	true	K	0	true	false	false	false	-36
+MdYUCCA4a	MdYUCCA4a	1	3	45	12	1742	9	1	197	498	Chr16	1	16559142	16561076	3	true	M	true	H	0	true	false	false	false	-2147483648
+MdYUCCA4b	MdYUCCA4b	1	3	19	10	1161	6	6	82	1182	Chr13	1	15983018	15984889	3	true	M	true	H	0	true	false	false	false	-107
+MdYUCCA4b	MdYUCCA4b	1	1	19	10	1161	6	5	82	1075	Chr8	-1	9996113	9996757	1	true	M	true	V	0	false	false	false	false	-327
+MdYUCCA4b	MdYUCCA4b	1	2	19	10	1161	6	4	84	748	Chr5	-1	20205588	20207188	2	true	M	true	I	0	true	false	false	false	-61
+MdYUCCA4b	MdYUCCA4b	1	1	19	10	1161	6	3	84	687	Chr2	-1	2594032	2594679	1	true	M	true	L	0	false	false	false	false	-182
+MdYUCCA4b	MdYUCCA4b	1	3	19	10	1161	6	2	88	505	Chr16	1	16559142	16561058	3	true	M	true	H	0	true	false	false	false	-485
+MdYUCCA4b	MdYUCCA4b	1	3	19	10	1161	6	1	92	20	Chr3	-1	22146236	22147115	3	true	M	true	C	0	true	false	false	false	-2147483648
+MdYUCCA6a	MdYUCCA6a	1	2	27	9	1537	3	3	28	1615	Chr15	-1	5795830	5798550	2	true	M	true	A	0	true	false	false	false	-158
+MdYUCCA6a	MdYUCCA6a	1	2	27	9	1537	3	2	30	1457	Chr8	-1	8257776	8260340	2	true	M	true	A	0	true	false	false	false	-1293
+MdYUCCA6a	MdYUCCA6a	1	2	27	9	1537	3	1	32	164	Chr2	-1	2592061	2592962	2	true	M	true	F	0	true	false	false	false	-2147483648
+MdYUCCA6b	MdYUCCA6b	1	3	15	9	1156	4	4	57	1072	Chr15	-1	7026854	7028855	3	true	M	true	S	0	true	false	false	false	-46
+MdYUCCA6b	MdYUCCA6b	1	2	15	9	1156	4	3	59	1026	Chr13	1	15983018	15984220	2	true	M	true	K	0	true	false	false	false	-109
+MdYUCCA6b	MdYUCCA6b	1	2	15	9	1156	4	2	61	917	Chr2	-1	2592058	2594736	2	true	M	true	T	0	true	false	false	false	-418
+MdYUCCA6b	MdYUCCA6b	1	2	15	9	1156	4	1	63	499	Chr16	1	16558875	16559825	2	true	M	true	V	0	true	false	false	false	-2147483648
+MdYUCCA8a	MdYUCCA8a	1	2	31	13	1601	7	7	97	1756	Chr10	-1	18248156	18249325	2	true	M	true	Q	0	true	false	false	false	-395
+MdYUCCA8a	MdYUCCA8a	1	2	31	13	1601	7	6	99	1361	Chr13	1	15983018	15984220	2	true	M	true	K	0	true	false	false	false	-215
+MdYUCCA8a	MdYUCCA8a	1	1	31	13	1601	7	5	99	1146	Chr5	-1	20206508	20207188	1	true	M	true	L	0	false	false	false	false	-84
+MdYUCCA8a	MdYUCCA8a	1	3	31	13	1601	7	4	103	1062	Chr15	-1	7026836	7028855	3	true	M	true	I	0	true	false	false	false	-300
+MdYUCCA8a	MdYUCCA8a	1	2	31	13	1601	7	3	105	762	Chr2	-1	2592055	2594679	2	true	M	true	T	0	true	false	false	false	-89
+MdYUCCA8a	MdYUCCA8a	1	2	31	13	1601	7	2	107	673	Chr16	1	16559142	16559825	2	true	M	true	V	0	true	false	false	false	-596
+MdYUCCA8a	MdYUCCA8a	1	4	31	13	1601	7	1	113	77	Chr3	-1	22146230	22148036	4	true	M	true	R	0	true	false	false	false	-2147483648
+MdYUCCA8b	MdYUCCA8b	1	1	7	5	723	4	4	53	745	Chr2	-1	2594032	2594736	1	true	M	true	L	0	false	false	false	false	-625
+MdYUCCA8b	MdYUCCA8b	1	1	7	5	723	4	3	53	120	Chr5	1	16547377	16547706	1	true	M	true	S	0	false	false	false	false	-1
+MdYUCCA8b	MdYUCCA8b	1	2	7	5	723	4	2	53	120	Chr3	-1	22157341	22157949	2	true	M	true	I	0	true	false	false	false	-286
+MdYUCCA8b	MdYUCCA8b	1	2	7	5	723	4	1	55	-166	Chr15	-1	17916253	17926942	2	true	Q	true	K	0	true	false	false	false	-2147483648
+MdYUCCA10a	MdYUCCA10a	1	3	43	11	1627	10	10	287	1649	Chr3	-1	22157329	22158779	3	true	M	true	L	0	true	false	false	false	-833
+MdYUCCA10a	MdYUCCA10a	1	4	43	11	1627	10	9	293	816	Chr15	-1	17916271	17917775	4	true	M	true	L	0	true	false	false	false	-63
+MdYUCCA10a	MdYUCCA10a	1	3	43	11	1627	10	8	297	753	Chr8	-1	8257824	8260268	3	true	M	true	E	0	true	false	false	false	-2
+MdYUCCA10a	MdYUCCA10a	1	2	43	11	1627	10	7	299	751	Chr10	1	675465	676546	2	true	M	true	E	0	true	false	false	false	-9
+MdYUCCA10a	MdYUCCA10a	1	2	43	11	1627	10	6	301	742	Chr10	-1	18248156	18249268	2	true	M	true	Q	0	true	false	false	false	-3
+MdYUCCA10a	MdYUCCA10a	1	2	43	11	1627	10	5	303	739	Chr13	1	15983018	15984220	2	true	M	true	K	0	true	false	false	false	-7
+MdYUCCA10a	MdYUCCA10a	1	2	43	11	1627	10	4	305	732	Chr5	-1	20206020	20207131	2	true	M	true	Q	0	true	false	false	false	-86
+MdYUCCA10a	MdYUCCA10a	1	4	43	11	1627	10	3	311	646	Chr16	1	16559142	16561001	4	true	M	true	I	0	true	false	false	false	-9
+MdYUCCA10a	MdYUCCA10a	1	2	43	11	1627	10	2	313	637	Chr2	-1	2592744	2594679	2	true	M	true	S	0	true	false	false	false	-506
+MdYUCCA10a	MdYUCCA10a	1	3	43	11	1627	10	1	317	131	Chr4	-1	10027469	10028031	3	true	M	true	R	0	true	false	false	false	-2147483648
+MdYUCCA10b	MdYUCCA10b	1	4	52	11	1860	9	9	251	1987	Chr15	-1	8205908	8208577	4	true	M	true	K	0	true	false	false	false	-1270
+MdYUCCA10b	MdYUCCA10b	1	3	52	11	1860	9	8	255	717	Chr3	-1	22157329	22158869	3	true	M	true	L	0	true	false	false	false	-108
+MdYUCCA10b	MdYUCCA10b	1	5	52	11	1860	9	7	263	609	Chr10	1	648253	653276	5	true	M	true	L	0	true	false	false	false	-53
+MdYUCCA10b	MdYUCCA10b	1	2	52	11	1860	9	6	265	556	Chr8	-1	8258764	8260268	2	true	M	true	L	0	true	false	false	false	-10
+MdYUCCA10b	MdYUCCA10b	1	2	52	11	1860	9	5	267	546	Chr5	-1	20206167	20207188	2	true	M	true	D	0	true	false	false	false	-8
+MdYUCCA10b	MdYUCCA10b	1	2	52	11	1860	9	4	269	538	Chr10	-1	18248303	18249325	2	true	M	true	D	0	true	false	false	false	-2
+MdYUCCA10b	MdYUCCA10b	1	2	52	11	1860	9	3	271	536	Chr2	-1	2592792	2594736	2	true	M	true	L	0	true	false	false	false	-2
+MdYUCCA10b	MdYUCCA10b	1	2	52	11	1860	9	2	273	534	Chr13	1	15983018	15984070	2	true	M	true	L	0	true	false	false	false	-152
+MdYUCCA10b	MdYUCCA10b	1	3	52	11	1860	9	1	277	382	Chr16	1	16559142	16560207	3	true	M	true	K	0	true	false	false	false	-2147483648
+MdYUCCA10c	MdYUCCA10c	1	3	21	10	841	6	6	83	684	Chr2	-1	2592100	2594679	3	true	M	true	E	0	true	false	false	false	-41
+MdYUCCA10c	MdYUCCA10c	1	1	21	10	841	6	5	83	643	Chr15	-1	17927345	17928049	1	true	M	true	L	0	false	false	false	false	-318
+MdYUCCA10c	MdYUCCA10c	1	1	21	10	841	6	4	83	325	Chr10	1	648450	648887	1	true	M	true	S	0	false	false	false	false	-113
+MdYUCCA10c	MdYUCCA10c	1	3	21	10	841	6	3	87	212	Chr4	-1	10027469	10028031	3	true	M	true	R	0	true	false	false	false	-98
+MdYUCCA10c	MdYUCCA10c	1	2	21	10	841	6	2	89	114	Chr5	-1	20205657	20206382	2	true	M	true	I	0	true	false	false	false	-130
+MdYUCCA10c	MdYUCCA10c	1	1	21	10	841	6	1	89	-16	Chr16	1	16560043	16560366	1	true	M	true	F	0	false	false	false	false	-2147483648
+MdYUCCA11b	MdYUCCA11b	1	4	31	9	1355	4	4	98	1314	Chr15	-1	17916268	17917775	4	true	M	true	N	0	true	false	false	false	-271
+MdYUCCA11b	MdYUCCA11b	1	3	31	9	1355	4	3	102	1043	Chr10	1	648253	650030	3	true	M	true	S	0	true	false	false	false	-421
+MdYUCCA11b	MdYUCCA11b	1	1	31	9	1355	4	2	102	622	Chr3	-1	22158156	22158779	1	true	M	true	V	0	false	false	false	false	-528
+MdYUCCA11b	MdYUCCA11b	1	2	31	9	1355	4	1	104	94	Chr16	1	16560043	16561004	2	true	M	true	A	0	true	false	false	false	-2147483648
+MdYUCCA11c	MdYUCCA11c	1	4	27	8	1348	5	5	112	1433	Chr10	1	651823	653300	4	true	M	true	D	0	true	false	false	false	-576
+MdYUCCA11c	MdYUCCA11c	1	3	27	8	1348	5	4	116	857	Chr5	-1	20205621	20207131	3	true	M	true	K	0	true	false	false	false	-57
+MdYUCCA11c	MdYUCCA11c	1	3	27	8	1348	5	3	120	800	Chr10	-1	18247756	18249268	3	true	M	true	Q	0	true	false	false	false	-125
+MdYUCCA11c	MdYUCCA11c	1	3	27	8	1348	5	2	124	675	Chr15	-1	8205923	8208577	3	true	M	true	S	0	true	false	false	false	-487
+MdYUCCA11c	MdYUCCA11c	1	2	27	8	1348	5	1	126	188	Chr3	-1	22157329	22157949	2	true	M	true	L	0	true	false	false	false	-2147483648
+MdYUCCA11d	MdYUCCA11d	1	4	29	7	1402	4	4	117	1385	Chr15	-1	17916268	17928049	4	true	M	true	N	0	true	false	false	false	-310
+MdYUCCA11d	MdYUCCA11d	1	2	29	7	1402	4	3	119	1075	Chr10	1	651823	652726	2	true	M	true	V	0	true	false	false	false	-542
+MdYUCCA11d	MdYUCCA11d	1	2	29	7	1402	4	2	121	533	Chr5	-1	20205651	20207131	2	true	M	true	N	0	true	false	false	false	-520
+MdYUCCA11d	MdYUCCA11d	1	2	29	7	1402	4	1	123	13	Chr8	-1	8257818	8258964	2	true	M	true	C	0	true	false	false	false	-2147483648
+MdYUCCA11f	MdYUCCA11f	1	2	3	2	625	2	2	25	611	Chr15	-1	7027815	7028855	2	true	M	true	S	0	true	false	false	false	-643
+MdYUCCA11f	MdYUCCA11f	1	2	3	2	625	2	1	27	-32	Chr10	1	652941	653279	2	true	M	true	N	0	true	false	false	false	-2147483648
+>MdYUCCA11a	>MdYUCCA11a	1	3	24	12	921	6	6	69	844	Chr10	-1	18247789	18249268	3	true	M	true	G	0	true	false	false	false	-138
+>MdYUCCA11a	>MdYUCCA11a	1	3	24	12	921	6	5	73	706	Chr3	-1	22146254	22158779	3	true	M	true	K	0	true	false	false	false	-159
+>MdYUCCA11a	>MdYUCCA11a	1	1	24	12	921	6	4	73	547	Chr10	1	651823	652344	1	true	M	true	S	0	false	false	false	false	-71
+>MdYUCCA11a	>MdYUCCA11a	1	1	24	12	921	6	3	73	476	Chr15	-1	5797696	5798475	1	true	M	true	F	0	false	false	false	false	-9
+>MdYUCCA11a	>MdYUCCA11a	1	1	24	12	921	6	2	73	467	Chr2	-1	2594032	2594679	1	true	M	true	L	0	false	false	false	false	-327
+>MdYUCCA11a	>MdYUCCA11a	1	2	24	12	921	6	1	75	140	Chr16	1	16560043	16561028	2	true	M	true	K	0	true	false	false	false	-2147483648
+
